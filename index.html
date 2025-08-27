@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PopSend - Taking a Little Pause</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    "Inter",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    sans-serif;
+                background: #ffffff;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: #333;
+                padding: 20px;
+            }
+
+            .container {
+                text-align: center;
+                max-width: 800px;
+                width: 100%;
+                position: relative;
+            }
+
+            .logo {
+                margin-bottom: 40px;
+                position: relative;
+            }
+
+            .logo-text {
+                font-size: 3.5rem;
+                font-weight: 800;
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                letter-spacing: -0.02em;
+                margin-bottom: 10px;
+            }
+
+            .hero-section {
+                position: relative;
+                margin: 40px 0;
+                padding: 60px 20px;
+                background: #ffffff;
+                border-radius: 20px;
+            }
+
+            /* Create the artistic paint splash effect similar to the image */
+            .paint-splash {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 400px;
+                height: 300px;
+                background: linear-gradient(135deg, #2563eb, #1d4ed8, #3b82f6);
+                border-radius: 50% 30% 60% 40%;
+                opacity: 0.9;
+                z-index: 1;
+                animation: splash 4s ease-in-out infinite;
+            }
+
+            @keyframes splash {
+                0%,
+                100% {
+                    transform: translateX(-50%) scale(1) rotate(0deg);
+                    border-radius: 50% 30% 60% 40%;
+                }
+                50% {
+                    transform: translateX(-50%) scale(1.05) rotate(2deg);
+                    border-radius: 40% 50% 30% 60%;
+                }
+            }
+
+            /* Character silhouette inspired by the guy in the hat */
+            .character-silhouette {
+                position: relative;
+                z-index: 2;
+                margin: 40px auto;
+                width: 200px;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hat {
+                width: 80px;
+                height: 30px;
+                background: #22c55e;
+                border-radius: 50px;
+                margin-bottom: 10px;
+                position: relative;
+                box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+            }
+
+            .person {
+                width: 60px;
+                height: 60px;
+                background: #64748b;
+                border-radius: 50%;
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            .laptop {
+                width: 80px;
+                height: 50px;
+                background: #374151;
+                border-radius: 5px;
+                position: relative;
+            }
+
+            .laptop::before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                height: 30px;
+                background: #1f2937;
+                border-radius: 3px;
+            }
+
+            .main-message {
+                font-size: 2.2rem;
+                margin: 40px 0 20px;
+                color: #1f2937;
+                font-weight: 700;
+                line-height: 1.3;
+                position: relative;
+                z-index: 3;
+            }
+
+            .sub-message {
+                font-size: 1.3rem;
+                color: #6b7280;
+                margin-bottom: 40px;
+                line-height: 1.6;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                z-index: 3;
+            }
+
+            .pause-icon {
+                font-size: 3rem;
+                margin: 20px 0;
+                color: #2563eb;
+                animation: blink 2s ease-in-out infinite;
+            }
+
+            @keyframes blink {
+                0%,
+                50%,
+                100% {
+                    opacity: 1;
+                }
+                25%,
+                75% {
+                    opacity: 0.3;
+                }
+            }
+
+            .stay-tuned {
+                font-size: 1.2rem;
+                color: #4b5563;
+                font-weight: 500;
+                margin-top: 30px;
+                position: relative;
+                z-index: 3;
+            }
+
+            .social-links {
+                margin-top: 50px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                position: relative;
+                z-index: 3;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            }
+
+            .social-link:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            }
+
+            /* Add some decorative elements */
+            .decoration {
+                position: absolute;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #fbbf24, #f59e0b);
+                animation: float 3s ease-in-out infinite;
+            }
+
+            .decoration:nth-child(1) {
+                width: 20px;
+                height: 20px;
+                top: 15%;
+                right: 20%;
+                animation-delay: 0s;
+            }
+
+            .decoration:nth-child(2) {
+                width: 15px;
+                height: 15px;
+                bottom: 25%;
+                left: 15%;
+                animation-delay: 1s;
+            }
+
+            .decoration:nth-child(3) {
+                width: 25px;
+                height: 25px;
+                top: 60%;
+                right: 10%;
+                animation-delay: 2s;
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+                .logo-text {
+                    font-size: 2.8rem;
+                }
+
+                .main-message {
+                    font-size: 1.8rem;
+                }
+
+                .sub-message {
+                    font-size: 1.1rem;
+                    padding: 0 10px;
+                }
+
+                .paint-splash {
+                    width: 300px;
+                    height: 200px;
+                }
+
+                .character-silhouette {
+                    width: 150px;
+                    height: 200px;
+                }
+
+                .hero-section {
+                    padding: 40px 15px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .logo-text {
+                    font-size: 2.2rem;
+                }
+
+                .main-message {
+                    font-size: 1.5rem;
+                }
+
+                .sub-message {
+                    font-size: 1rem;
+                }
+
+                .paint-splash {
+                    width: 250px;
+                    height: 150px;
+                }
+
+                .character-silhouette {
+                    width: 120px;
+                    height: 150px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logo">
+                <img
+                    class="logo-image"
+                    src="./PopSendFullLogo.svg"
+                    alt="PopSend Logo"
+                />
+            </div>
+
+            <h1 class="main-message">PopSend is taking a little pause</h1>
+
+            <p class="sub-message">
+                We're working behind the scenes to bring you something even
+                better.
+            </p>
+
+            <p class="stay-tuned">Stay tuned for updates ✨</p>
+
+            <div class="social-links">
+                <a href="#" class="social-link" title="Twitter">🐦</a>
+                <a href="#" class="social-link" title="Email">✉️</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+            </div>
+        </div>
+    </body>
+</html>
